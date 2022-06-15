@@ -33,18 +33,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: 80,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            BottomNavItem(),
-             BottomNavItem(),
-          ],
-        ),
-        ),
+      bottomNavigationBar: BottomNavigationBar(),
       body: Stack(
         children: [
           Container(
@@ -78,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "Good Morning 420",
+                "Good Morning Reeti",
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w900),
                 ),
                 Container(
@@ -142,15 +131,46 @@ class BottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (() {}),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [SvgPicture.asset("assets/icons/calendar.svg"),
-        Text("Today"),
-        ],
-      ),
+    return Scaffold(
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
+
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+      height: 80,
+      color: Colors.white,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          BottomNavBar(
+          svgScr: "assets/icons/calendar.svg",
+          title: "Today",
+          ),
+          BottomNavBar(
+          svgScr: "assets/icons/gym.svg",
+          title: "All Exerxises",
+          ),
+           BottomNavBar(
+          svgScr: "assets/icons/Settings.svg",
+          title: "Settings",
+           ),
+        ],
+          ),
+    
+        
+      
+      );
+  }
+}
+
+
 
